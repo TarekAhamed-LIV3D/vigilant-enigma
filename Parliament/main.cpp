@@ -16,7 +16,7 @@ using namespace std;
 GLfloat position1 = 0.0f;
 GLfloat position2 = 0.0f;
 GLfloat speed = 2;
-GLfloat speed2 = 4;
+GLfloat speed2 = 2;
 float xn=0;
 float yq;
 float xm;
@@ -28,18 +28,13 @@ float k,l,q,w;
 float _rain = 0.0;
 bool rainday = false;
 
-//For Display TEXT
-const int font1=(int)GLUT_BITMAP_TIMES_ROMAN_24;
-const int font2=(int)GLUT_BITMAP_HELVETICA_18 ;
-const int font3=(int)GLUT_BITMAP_8_BY_13;
-
 //timer update start
 void update(int value){
     if(position1 > 1200)
-        position1 = -10;
+        position1 = -5;
     position1 += speed;
     if(position2 > 1200)
-        position2 = -10;
+        position2 = -5;
     position2 += speed2;
 	glutPostRedisplay();
 	glutTimerFunc(100, update, 0);
@@ -526,28 +521,21 @@ void tree(int x, int y){
 //Big tree function end
 
 //car moving start
-void carmove()
-{
-    	if(xn>1200.0)
-	{
-		xn= -850.0;
-	}
-    xn+=0.001;
-        	if(xm<-600.0)
-	{
-		xm=900.0;
-	}
-    xm-=0.0001;
-        	if(m>15.0)
-	{
-		m= 0.0;
-	}
-    m+=0.001;
-    	if(k>1200.0)
-	{
-		k= -5.0;
-	}
-    k+=0.0001;
+void carmove(){
+    	if(xn>1200.0){
+            xn= -850.0;
+        }
+        xn+=0.0001;
+
+        if(xm<-600.0){
+            xm=900.0;
+        }
+        xm-=0.0001;
+
+        if(m>15.0){
+            m= 0.0;
+        }
+        m+=0.0001;
 }
 //car moving end
 
@@ -937,6 +925,12 @@ void myDisplay(void)
     glVertex2i(510, 590);
     glVertex2i(510, 390);
     glEnd();
+
+    glBegin(GL_LINES);
+	glColor3ub(255, 255, 255);
+    glVertex2i(550, 405);
+    glVertex2i(450, 405);
+    glEnd();
     //column 9 end
 
 	//column 11 start
@@ -1012,6 +1006,12 @@ void myDisplay(void)
 	glColor3ub(255, 255, 255);
     glVertex2i(610, 420);
     glVertex2i(710, 420);
+    glEnd();
+
+    glBegin(GL_LINES);
+	glColor3ub(255, 255, 255);
+    glVertex2i(610, 405);
+    glVertex2i(710, 405);
     glEnd();
 
     glBegin(GL_LINES);
@@ -1094,6 +1094,12 @@ void myDisplay(void)
 	glColor3ub(255, 255, 255);
     glVertex2i(550, 420);
     glVertex2i(610, 420);
+    glEnd();
+
+    glBegin(GL_LINES);
+	glColor3ub(255, 255, 255);
+    glVertex2i(550, 405);
+    glVertex2i(610, 405);
     glEnd();
 
     glBegin(GL_QUADS);
@@ -1180,6 +1186,12 @@ void myDisplay(void)
 	glColor3ub(255, 255, 255);
     glVertex2i(790, 430);
     glVertex2i(710, 420);
+    glEnd();
+
+    glBegin(GL_LINES);
+	glColor3ub(255, 255, 255);
+    glVertex2i(790, 415);
+    glVertex2i(710, 405);
     glEnd();
 
     //circle right start
@@ -1552,6 +1564,12 @@ void myDisplay(void)
 	glColor3ub(255, 255, 255);
     glVertex2i(370, 430);
     glVertex2i(445, 420);
+    glEnd();
+
+    glBegin(GL_LINES);
+	glColor3ub(255, 255, 255);
+    glVertex2i(370, 415);
+    glVertex2i(445, 405);
     glEnd();
 
     //circle left start
@@ -2961,7 +2979,7 @@ void handleKeypress(unsigned char key, int x, int y) {
     }
 }
 
-void myInit (void){
+void myInit (){
     glClearColor(0.0, 0.0, 0.0, 0.0);
     glMatrixMode(GL_PROJECTION);
     glLoadIdentity();

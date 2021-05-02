@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1619889777 source:m:\github codes\vigilant-enigma\parliament\main.cpp
+1619931827 source:m:\github codes\vigilant-enigma\parliament\main.cpp
 	<cstdio>
 	<cstdio>
 	<GL/gl.h>
